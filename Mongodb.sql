@@ -60,29 +60,7 @@ ALTER TABLE cse RENAME column
     select s_id, s_attendance from csecloud;
 	select s_id, s_attendance from csecloud where s_id = 104;
 
-show databases
-admin                  40.00 KiB
-config                 60.00 KiB
-local                  96.00 KiB
-monday                 40.00 KiB
-orphanage_management  384.00 KiB
-test                    8.00 KiB
-monday
-ReferenceError: monday is not defined
-use monday
-switched to db monday
-show collections
-products
-db.products.insertMany([
-	{ "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate" : ISODate("2011-05-14T00:00:00Z"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 }, "color" : [ "white", "black" ], "storage" : [ 64, 128, 256 ] },
-	{ "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate" : ISODate("2011-09-01T00:00:00Z"), "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 }, "color" : [ "white", "black", "purple" ], "storage" : [ 128, 256, 512 ] },
-	{ "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate" : ISODate("2015-01-14T00:00:00Z"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 }, "color" : [ "blue" ], "storage" : [ 16, 64, 128 ] },
-	{ "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate" : ISODate("2020-05-14T00:00:00Z"), "spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 }, "color" : [ "white", "orange", "gold", "gray" ], "storage" : [ 128, 256, 1024 ] },
-	{ "_id" : 5, "name" : "SmartPhone", "price" : 599, "releaseDate" : ISODate("2022-09-14T00:00:00Z"), "spec" : { "ram" : 4, "screen" : 9.7, "cpu" : 1.66 }, "color" : [ "white", "orange", "gold", "gray" ], "storage" : [ 128, 256 ] },
-	{ "_id" : 6, "name" : "xWidget", "spec" : { "ram" : 64, "screen" : 9.7, "cpu" : 3.66 }, "color" : [ "black" ], "storage" : [ 1024 ] }
-])
--- MongoBulkWriteError: E11000 duplicate key error collection: monday.products index: _id_ dup key: { _id: 1 }
-monday
+
     
     
     CREATE DATABASE ORG123;
@@ -539,45 +517,6 @@ FROM Worker
 WHERE DEPARTMENT = 'HR'  
 AND SALARY = (SELECT MIN(SALARY) FROM Worker WHERE DEPARTMENT = 'HR');
 
-use org123;
-
-create table student(
-  s_id int primary key,
-  s_name varchar(25) not null,
-  s_department varchar(25) not null
-  );
-
-insert into student values (1001, "Shubham","CSE"),(1002,"Joy","CSE"),(1003,"Ujjwal","CSE");
-
-select * from student;
-
-
-create table VIT(
-  s_id int primary key,
-  s_cgpa varchar(5) not null
-  );
-
-insert into vit values (1001,'8.2'),(1003,'8.5'),(1007,'9.5');
-select * from vit;
-
-use org123;
-
-select * from student cross join vit;
-
-select * from student INNER JOIN vit where student.s_id = vit.s_id;
-
-
-select * from student NATURAL JOIN vit where student.s_id = vit.s_id;
-
-select * from student LEFT JOIN vit ON (student.s_id = vit.s_id);
-
-select * from student RIGHT JOIN vit ON (student.s_id = vit.s_id);
-
-select * from student full JOIN vit;
-
-select * from student FULL OUTER JOIN vit ON (student.s_id = vit.s_id);
-
-
 
 COUNT() Syntax
 SELECT COUNT(column_name)
@@ -1262,4 +1201,75 @@ select * from vitbhopal;
 select * from vit;
 select name as WinnerOfTheYear from vitbhopal
 where id = (select id from vit where place='delhi');
+
+use org123;
+
+create table student(
+  s_id int primary key,
+  s_name varchar(25) not null,
+  s_department varchar(25) not null
+  );
+
+insert into student values (1001, "Shubham","CSE"),(1002,"Joy","CSE"),(1003,"Ujjwal","CSE");
+
+select * from student;
+
+
+create table VIT(
+  s_id int primary key,
+  s_cgpa varchar(5) not null
+  );
+
+insert into vit values (1001,'8.2'),(1003,'8.5'),(1007,'9.5');
+select * from vit;
+
+use org123;
+
+select * from student cross join vit;
+
+select * from student INNER JOIN vit where student.s_id = vit.s_id;
+
+
+select * from student NATURAL JOIN vit where student.s_id = vit.s_id;
+
+select * from student LEFT JOIN vit ON (student.s_id = vit.s_id);
+
+select * from student RIGHT JOIN vit ON (student.s_id = vit.s_id);
+
+select * from student full JOIN vit;
+
+select * from student FULL OUTER JOIN vit ON (student.s_id = vit.s_id);
+
+
+create database friday;
+use friday;
+show tables from friday;
+
+create table student(id int, name varchar(20), location varchar(20));
+insert into student values (101, 'Shubham','Samastipur'),(102,'Joy','Kolkata');
+
+select *from student;
+
+
+create database saturday;
+use saturday;
+create table 'user'(
+  'sl_no' INT(5) NULL DEFAULT NULL,
+  'name' VARCHAR(100) NULL DEFAULT NULL,
+  'email' VARCHAR(100) NULL DEFAULT NULL
+);
+
+select * from user;
+
+
+create Database crud;
+use crud;
+
+create table user1(
+  sl_no INT NULL DEFAULT NULL,
+  name VARCHAR(100) NULL DEFAULT NULL,
+  email VARCHAR(100) NULL DEFAULT NULL
+  );
+
+select * from user1
 
